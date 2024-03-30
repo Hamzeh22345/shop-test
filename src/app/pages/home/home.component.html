@@ -7,14 +7,12 @@
 
     @for (item of cardProduct; track $index) {
     <div class="col-3 p-3 h-100">
-        <app-card [title]="item.title" [price]="item.price" [description]="item.description"
-            [image]="item.image" (add)="addToCart()" (remove)="removeFromCart()"></app-card>
+        <app-card [title]="item.title" [price]="item.price" [description]="item.description" [image]="item.image"
+            (add)="addToCart()" (remove)="removeFromCart()"></app-card>
     </div>
     }
 
-    <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+        (pageSizeChange)="onPageSizeChange($event)" aria-label="Select page">
+    </mat-paginator>
 </div>

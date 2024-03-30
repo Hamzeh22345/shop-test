@@ -8,7 +8,7 @@ export class HomeService {
   constructor(@Inject(HttpClient) private http: HttpClient) {
 
   }
-  getAllProducts() {
-    return this.http.get('https://fakestoreapi.com/products');
+  getAllProducts(pageSize: number) {
+    return this.http.get(`https://fakestoreapi.com/products?limit=${pageSize}`);
   }
 }

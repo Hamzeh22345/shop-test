@@ -12,4 +12,5 @@ export interface State {
   counter: number;
   isLoading: boolean;
   search: string;
+  pageSize: number;
 }

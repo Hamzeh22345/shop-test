@@ -6,3 +6,5 @@ export const fetchProductsSuccess = createAction('[Products] fetchProductsSucces
 export const counterIncrement = createAction('[Products] counterIncrement');
 export const counterDecrement = createAction('[Products] counterDecrement');
 export const searchProducts = createAction('[Products] searchProducts', props<{ search: string }>());
+export const pageSizeChange = createAction('[Products] pageSizeChange',props<{pageSize: number}>());
+

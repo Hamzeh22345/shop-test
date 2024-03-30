@@ -6,11 +6,13 @@ import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { HomeService } from '../home.service';
 @Injectable()
 export class HomeEffects {
+pageSize: number = 10;
+
   fetchProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType('[Products] fetchProducts'),
       exhaustMap(() =>
-        this.homeService.getAllProducts().pipe(
+        this.homeService.getAllProducts(this.pageSize).pipe(
           map((products) => ({
             type: '[Products] fetchProductsSuccess',
             products: products

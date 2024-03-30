@@ -6,6 +6,7 @@ import {
   counterIncrement,
   fetchProducts,
   fetchProductsSuccess,
+  pageSizeChange,
   searchProducts,
 } from '../actions/products.actions';
 
@@ -15,6 +16,7 @@ export const initialState: State = {
   isLoading: false,
   search: '',
   filteredProducts: [],
+  pageSize: 10,
 };
 
 export const productsReducer = createReducer(
@@ -36,5 +38,9 @@ export const productsReducer = createReducer(
     filteredProducts: state.products.filter(product =>
       product.title.toLowerCase().includes(search.toLowerCase())
     ),
+  })),
+  on(pageSizeChange, (state, { pageSize }) => ({
+    ...state,
+    pageSize
   }))
 );

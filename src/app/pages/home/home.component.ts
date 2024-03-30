@@ -6,6 +6,7 @@ import {
   counterDecrement,
   counterIncrement,
   fetchProducts,
+  pageSizeChange,
 } from '../../shared/store/actions/products.actions';
 import { HomeService } from './home.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -35,10 +36,6 @@ export class HomeComponent {
   }
 
   getCardData() {
-    // this.homeService.getAllProducts().subscribe((data: any) => {
-    //   this.cardProduct = data;
-
-    // });
     this.store.dispatch(fetchProducts());
     this.store.subscribe((data: any) => {
       this.cardProduct = data.products.filteredProducts;
@@ -49,5 +46,10 @@ export class HomeComponent {
   }
   removeFromCart() {
     this.store.dispatch(counterDecrement());
+  }
+  onPageSizeChange($event: any) {
+    console.log($event);
+    
+    this.store.dispatch(pageSizeChange({ pageSize: $event.pageSize }));
   }
 }
