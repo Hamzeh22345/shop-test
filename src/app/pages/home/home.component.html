@@ -9,7 +9,7 @@
         @for (item of cardProduct; track $index) {
     <div class="col-3 p-3 h-100">
         <app-card [title]="item.title" [price]="item.price" [description]="item.description" [image]="item.image"
-            (add)="addToCart()" (remove)="removeFromCart()"></app-card>
+            (add)="addToCart()" (remove)="removeFromCart()"  [@fadeInOut]="isSearching ? 'fade' : 'normal'"></app-card>
         </div>
     }
     

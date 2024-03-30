@@ -10,6 +10,7 @@ import {
 } from '../../shared/store/actions/products.actions';
 import { HomeService } from './home.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +18,20 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   imports: [CardComponent,MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  animations: [
+    trigger('fadeInOut', [
+      state('normal', style({ opacity: 1 })),
+      state('fade', style({ opacity: 0 })),
+      transition('normal <=> fade', animate(500)),
+    ]),
+  ],
 })
 export class HomeComponent {
   cardProduct: IProduct[] = [];
   isLoading: boolean = false;
   pageSize: number = 10;
   dataLength:number=20;
+  isSearching = false;
 
   constructor(
     @Inject(HomeService) private homeService: HomeService,
@@ -32,6 +41,7 @@ export class HomeComponent {
 
       this.isLoading = data.products.isLoading;
       this.dataLength=data.products.products.length
+      this.isSearching=data.products.isSearching
     });
 
     this.getCardData();

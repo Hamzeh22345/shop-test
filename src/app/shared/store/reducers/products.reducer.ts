@@ -8,6 +8,7 @@ import {
   fetchProductsSuccess,
   pageSizeChange,
   searchProducts,
+  searchProductsRequest,
 } from '../actions/products.actions';
 
 export const initialState: State = {
@@ -18,6 +19,7 @@ export const initialState: State = {
   filteredProducts: [],
   pageSize: 10,
   dataLength: 0,
+  isSearching : false,
 };
 
 export const productsReducer = createReducer(
@@ -40,9 +42,16 @@ export const productsReducer = createReducer(
     ...state,
     counter: Math.max(0, state.counter - 1),
   })),
+  on(searchProductsRequest, (state) => ({
+    ...state,
+    isSearching:true,
+   
+  })),
   on(searchProducts, (state, { search }) => ({
     ...state,
+    isSearching:false,
     filteredProducts: state.products.filter((product) =>
+      
       product.title.toLowerCase().includes(search.toLowerCase())
     ),
   })),

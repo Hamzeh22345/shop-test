@@ -8,7 +8,7 @@ import { State } from '../../models/product';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { searchProducts } from '../../store/actions/products.actions';
+import { searchProducts, searchProductsRequest } from '../../store/actions/products.actions';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +28,6 @@ import { searchProducts } from '../../store/actions/products.actions';
 export class HeaderComponent {
   counter: number = 0;
   value: string = '';
-
   constructor(private store: Store<State>) {
     this.store.subscribe((data: any) => {
       if (data.products.counter < 0) {
@@ -43,6 +42,10 @@ export class HeaderComponent {
   onSearch($event: any) {
     const searchValue = $event.target.value;
 
-    this.store.dispatch(searchProducts({ search: searchValue }));
+    this.store.dispatch(searchProductsRequest());
+    setTimeout(() => {
+      this.store.dispatch(searchProducts({search: searchValue}));
+      
+    }, 500); // Adjust timing based on animation duration
   }
 }

@@ -14,4 +14,5 @@ export interface State {
   search: string;
   pageSize: number;
   dataLength:number;
+  isSearching:boolean
 }
