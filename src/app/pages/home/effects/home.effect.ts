@@ -9,8 +9,8 @@ import { State } from '../../../shared/models/product';
 @Injectable()
 export class HomeEffects {
 pageSize: number = 10;
-startIndex:number=0;
-endIndex:number=10;
+
+
 
   fetchProducts$ = createEffect(() =>
     this.actions$.pipe(
@@ -21,8 +21,6 @@ endIndex:number=10;
             type: '[Products] fetchProductsSuccess',
             products: products,
             pageSize: this.pageSize,
-            startIndex:this.startIndex,
-            endIndex:this.endIndex,
           })),
           catchError(() => EMPTY)
         )
@@ -35,11 +33,6 @@ endIndex:number=10;
 
     this.store.subscribe((data: any)=> {
       this.pageSize = data.products.pageSize;
-      this.startIndex=data.products.startIndex;
-      this.endIndex=data.products.endIndex;
-      console.log(this.startIndex);
-      console.log(data.products.pageSize);
-      console.log(data.products.startIndex);
       
     })
   }

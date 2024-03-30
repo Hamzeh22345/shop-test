@@ -29,26 +29,18 @@ export class HomeComponent {
     private store: Store<State>
   ) {
     this.store.subscribe((data: any) => {
-      console.log(data);
 
       this.isLoading = data.products.isLoading;
       this.dataLength=data.products.products.length
-      console.log(this.isLoading);
     });
 
     this.getCardData();
 
   }
 
-  getAllData(pageIndex: number, pageSize: number) {
-    
-    this.homeService.getAll().subscribe((data:any)=> {
-    })
-  }
-
   getCardData() {
 
-    this.store.dispatch(fetchProducts({pageSize:1000,startIndex:0,endIndex:10}));
+    this.store.dispatch(fetchProducts({pageSize:this.pageSize}));
     this.store.subscribe((data: any) => {
       this.cardProduct = data.products.filteredProducts;
     });
@@ -60,12 +52,8 @@ export class HomeComponent {
     this.store.dispatch(counterDecrement());
   }
   onPageSizeChange($event: any) {
-    console.log($event);
-    const startingIndex = $event.pageIndex * $event.pageSize;
-    const endingIndex = startingIndex + $event.pageSize;
-    console.log(startingIndex);
-    console.log(endingIndex);
+
     
-    this.store.dispatch(fetchProducts({pageSize:$event.pageSize,startIndex:startingIndex,endIndex:endingIndex}));
+    this.store.dispatch(fetchProducts({pageSize:$event.pageSize}));
   }
 }

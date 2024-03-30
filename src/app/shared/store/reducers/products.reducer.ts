@@ -17,29 +17,23 @@ export const initialState: State = {
   search: '',
   filteredProducts: [],
   pageSize: 10,
-  dataLength:0,
-  startIndex:0,
-  endIndex:10,
+  dataLength: 0,
 };
 
 export const productsReducer = createReducer(
   initialState,
-  on(fetchProducts, (state,{pageSize,startIndex,endIndex}) => ({
-    ...state,
-    pageSize:pageSize?pageSize:1000,
-    isLoading: true,
-    startIndex:startIndex,
-    endIndex:endIndex
-  })),
-  on(fetchProductsSuccess, (state, { products,pageSize,startIndex,endIndex }) => ({
+  on(fetchProducts, (state, { pageSize }) => ({
     ...state,
     pageSize,
-    products:products,
-    dataLength:products.length,
+    isLoading: true,
+  })),
+  on(fetchProductsSuccess, (state, { products, pageSize }) => ({
+    ...state,
+    pageSize,
+    products,
+    dataLength: products.length,
     isLoading: false,
-    
-
-    filteredProducts: products.slice(startIndex,endIndex),
+    filteredProducts: products,
   })),
   on(counterIncrement, (state) => ({ ...state, counter: state.counter + 1 })),
   on(counterDecrement, (state) => ({

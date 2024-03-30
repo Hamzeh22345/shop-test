@@ -43,8 +43,6 @@ export class HeaderComponent {
   onSearch($event: any) {
     const searchValue = $event.target.value;
 
-    console.log(searchValue);
-
     this.store.dispatch(searchProducts({ search: searchValue }));
   }
 }
