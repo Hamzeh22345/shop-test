@@ -1,0 +1,48 @@
+.example-card {
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.image-container {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.description-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    height: 200px;
+}
+
+.heading-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 120px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.price-container {
+    height: fit-content;
+}

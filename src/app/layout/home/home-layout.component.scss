@@ -1,0 +1,33 @@
+@use '../../../assets/vars.scss' as *;
+
+
+main {
+  display: grid;
+  grid-template-areas:
+    ' head'
+    ' content-t '
+    ' foot';
+  gap: 16px;
+  grid-template-rows: 48px auto 40px;
+  grid-template-columns: auto;
+  height: 100%;
+  transition: grid-template-columns 0.3s ease-in-out;
+}
+
+app-header {
+  grid-area: head;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  grid-area: content-t;
+  transition: background 0.3s ease-in-out;
+  color: #101010;
+  scrollbar-gutter: stable;
+}
+
+app-footer {
+  grid-area: foot;
+}

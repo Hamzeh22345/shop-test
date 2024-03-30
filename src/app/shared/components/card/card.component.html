@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+    <mat-card-header class="heading-title">
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <div class=" header-content">
+            <mat-card-title>{{title}}</mat-card-title>
+            <span class="btn btn-danger price-container">
+                ${{price}}
+            </span>
+        </div>
+    </mat-card-header>
+    <div class="image-container">
+        <img style="width: 160px;height: 200px;" mat-card-image [src]="image">
+    </div>
+    <mat-card-content class="description-content">
+        <p>
+            {{description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="onAddClick()" mat-button>Add</button>
+        <button (click)="onRemoveClick()" mat-button>Remove</button>
+    </mat-card-actions>
+</mat-card>

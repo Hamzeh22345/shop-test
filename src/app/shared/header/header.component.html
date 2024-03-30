@@ -1,0 +1,13 @@
+<mat-toolbar class="d-flex justify-content-between">
+
+  <span>My Shop</span>
+
+    <input class="search-input form-control" (change)="onSearch($event)" placeholder="Search..." matInput type="text" [(ngModel)]="value">
+
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon [matBadge]="counter" matBadgeColor="warn">shopping_bag</mat-icon>
+
+  </button>
+
+</mat-toolbar>
