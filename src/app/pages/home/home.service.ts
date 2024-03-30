@@ -11,4 +11,7 @@ export class HomeService {
   getAllProducts(pageSize: number) {
     return this.http.get(`https://fakestoreapi.com/products?limit=${pageSize}`);
   }
+  getAll() {
+    return this.http.get(`https://fakestoreapi.com/products?limit=10000`);
+  }
 }

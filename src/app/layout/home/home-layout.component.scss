@@ -14,9 +14,6 @@ main {
   transition: grid-template-columns 0.3s ease-in-out;
 }
 
-app-header {
-  grid-area: head;
-}
 
 body {
   width: 100%;
@@ -26,6 +23,9 @@ body {
   transition: background 0.3s ease-in-out;
   color: #101010;
   scrollbar-gutter: stable;
+}
+app-header {
+  grid-area: head;
 }
 
 app-footer {

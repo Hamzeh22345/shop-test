@@ -4,11 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { Store } from '@ngrx/store';
-import { State } from '../models/product';
+import { State } from '../../models/product';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { searchProducts } from '../store/actions/products.actions';
+import { searchProducts } from '../../store/actions/products.actions';
 
 @Component({
   selector: 'app-header',

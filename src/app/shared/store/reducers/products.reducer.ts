@@ -17,16 +17,29 @@ export const initialState: State = {
   search: '',
   filteredProducts: [],
   pageSize: 10,
+  dataLength:0,
+  startIndex:0,
+  endIndex:10,
 };
 
 export const productsReducer = createReducer(
   initialState,
-  on(fetchProducts, (state) => ({ ...state, isLoading: true })),
-  on(fetchProductsSuccess, (state, { products }) => ({
+  on(fetchProducts, (state,{pageSize,startIndex,endIndex}) => ({
     ...state,
-    products,
+    pageSize:pageSize?pageSize:1000,
+    isLoading: true,
+    startIndex:startIndex,
+    endIndex:endIndex
+  })),
+  on(fetchProductsSuccess, (state, { products,pageSize,startIndex,endIndex }) => ({
+    ...state,
+    pageSize,
+    products:products,
+    dataLength:products.length,
     isLoading: false,
-    filteredProducts: products,
+    
+
+    filteredProducts: products.slice(startIndex,endIndex),
   })),
   on(counterIncrement, (state) => ({ ...state, counter: state.counter + 1 })),
   on(counterDecrement, (state) => ({
@@ -35,12 +48,12 @@ export const productsReducer = createReducer(
   })),
   on(searchProducts, (state, { search }) => ({
     ...state,
-    filteredProducts: state.products.filter(product =>
+    filteredProducts: state.products.filter((product) =>
       product.title.toLowerCase().includes(search.toLowerCase())
     ),
   })),
   on(pageSizeChange, (state, { pageSize }) => ({
     ...state,
-    pageSize
+    pageSize,
   }))
 );

@@ -13,4 +13,7 @@ export interface State {
   isLoading: boolean;
   search: string;
   pageSize: number;
+  dataLength:number;
+  startIndex:number;
+  endIndex:number;
 }
