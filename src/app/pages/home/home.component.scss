@@ -9,3 +9,21 @@ app-card{
 .loading-image{
     width: 100px;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
+  .fade {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .normal {
+    animation: none;
+  }

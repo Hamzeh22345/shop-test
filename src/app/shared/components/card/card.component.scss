@@ -1,48 +1,63 @@
+@use "../../../../assets/vars.scss" as *;
 .example-card {
-    width: 350px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    min-height: 600px;
-    justify-content: space-between;
-    gap: 15px;
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  justify-content: space-between;
+  gap: 15px;
+  &:hover {
+    scale: 1.03;
+    transition: all 0.3s ease-in-out;
+  }
 }
 
 .image-container {
-    width: 100%;
-    overflow: hidden;
-    height: 200px;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  justify-content: center;
 }
 
 .description-content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  height: 200px;
 }
 
 .heading-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 120px;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
 }
 
 .price-container {
-    height: fit-content;
+  height: fit-content;
+}
+
+.card-image {
+  width: 160px;
+  height: 200px;
+}
+
+.primary-button {
+  background-color: $primary-color;
+  color: red;
 }

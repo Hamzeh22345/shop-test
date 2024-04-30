@@ -8,6 +8,7 @@ import {
   fetchProductsSuccess,
   pageSizeChange,
   searchProducts,
+  searchProductsRequest,
 } from '../actions/products.actions';
 
 export const initialState: State = {
@@ -17,14 +18,22 @@ export const initialState: State = {
   search: '',
   filteredProducts: [],
   pageSize: 10,
+  dataLength: 0,
+  isSearching : false,
 };
 
 export const productsReducer = createReducer(
   initialState,
-  on(fetchProducts, (state) => ({ ...state, isLoading: true })),
-  on(fetchProductsSuccess, (state, { products }) => ({
+  on(fetchProducts, (state, { pageSize }) => ({
     ...state,
+    pageSize,
+    isLoading: true,
+  })),
+  on(fetchProductsSuccess, (state, { products, pageSize }) => ({
+    ...state,
+    pageSize,
     products,
+    dataLength: products.length,
     isLoading: false,
     filteredProducts: products,
   })),
@@ -33,14 +42,21 @@ export const productsReducer = createReducer(
     ...state,
     counter: Math.max(0, state.counter - 1),
   })),
+  on(searchProductsRequest, (state) => ({
+    ...state,
+    isSearching:true,
+   
+  })),
   on(searchProducts, (state, { search }) => ({
     ...state,
-    filteredProducts: state.products.filter(product =>
+    isSearching:false,
+    filteredProducts: state.products.filter((product) =>
+      
       product.title.toLowerCase().includes(search.toLowerCase())
     ),
   })),
   on(pageSizeChange, (state, { pageSize }) => ({
     ...state,
-    pageSize
+    pageSize,
   }))
 );
